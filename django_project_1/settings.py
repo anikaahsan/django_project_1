@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,13 +76,12 @@ WSGI_APPLICATION = 'django_project_1.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    "default": {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_project_1',
-        'HOST':'localhost',
-        'USER':'root',
-        'PASSWORD':'anikaahsan'
-
+        'NAME': config('DB_NAME', 'example_db'),
+        'HOST': config('DB_HOST', 'localhost'),
+        'USER':config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD')
     }
 }
 
